@@ -11,11 +11,56 @@ const rl = readline.createInterface({
 });
 
 
+
 const pigLatin = (word) => {
 
-  // Your code here
+  //array of vowels to check against
+  const vowels = ["a","e","i","o","u"];
 
+  // trim & lowercase word
+  word = word.toLowerCase().trim();
+
+  let startsWithVowel;
+  let firstVowel;
+  let slicedCharacters;
+  
+    if (word[0] == 'a' || word[0] == 'e' || word[0] == 'i' || word[0] == 'o' || word[0] == 'u') {
+      startsWithVowel = true;
+    }
+    else {
+      startsWithVowel =  false;
+    }
+
+  // if word starts with vowel
+  if (startsWithVowel == true) {
+    word += "yay";
+    console.log(word);
+    return word;
+  }
+  //if word doesn't start with a vowel
+  else {
+    //find index of first vowel
+    for (let i=0; i<=word.length-1; i++) {
+      if (word[i] !== "a" && word[i] !== "e" && word[i] !== "i" && word[i] !== "o" && word[i] !== "u") {
+      }
+      else {
+        firstVowel = i;
+        break;
+      } 
+    }
+    // copy characters up until first vowel
+    slicedCharacters = word.slice(0, firstVowel);
+    // cut off characters before first vowel
+    word = word.slice(firstVowel, word.length);
+    // add sliced portion to end
+    word = word + slicedCharacters;
+    // add 'ay' to end of word
+    word += "ay";
+    console.log(word);
+    return word;
 }
+}
+
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
